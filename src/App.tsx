@@ -141,7 +141,7 @@ export default function App() {
         <header className="topbar">
           <div>
             <p className="eyebrow">Weather Atlas</p>
-            <h1 className="headline">Apple-style weather built with Bun</h1>
+            <h1 className="headline">IWA weather</h1>
           </div>
           <div className="unit-toggle" role="group" aria-label="Temperature unit">
             <button
