@@ -6,7 +6,7 @@ type MetricsGridProps = {
 }
 
 export default function MetricsGrid({ weather }: MetricsGridProps) {
-  const speedUnit = weather.unit === "fahrenheit" ? "mph" : "km/h"
+  const speedUnit = "km/h"
 
   const metrics: Array<{ label: string; value: string; hint: string }> = [
     {

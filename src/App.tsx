@@ -13,7 +13,6 @@ import {
   fetchWeatherBundle,
   searchLocations,
   type LocationResult,
-  type TemperatureUnit,
   type WeatherBundle,
 } from "./lib/weatherApi"
 
@@ -34,7 +33,7 @@ export default function App() {
   const [searching, setSearching] = useState(false)
 
   const [location, setLocation] = useState<LocationResult>(DEFAULT_LOCATION)
-  const [unit, setUnit] = useState<TemperatureUnit>("fahrenheit")
+  const unit = "celsius" as const
 
   const [weather, setWeather] = useState<WeatherBundle | null>(null)
   const [loading, setLoading] = useState(true)
@@ -142,22 +141,6 @@ export default function App() {
           <div>
             <p className="eyebrow">Weather Atlas</p>
             <h1 className="headline">IWA weather</h1>
-          </div>
-          <div className="unit-toggle" role="group" aria-label="Temperature unit">
-            <button
-              type="button"
-              className={unit === "fahrenheit" ? "toggle-active" : ""}
-              onClick={() => setUnit("fahrenheit")}
-            >
-              Fahrenheit
-            </button>
-            <button
-              type="button"
-              className={unit === "celsius" ? "toggle-active" : ""}
-              onClick={() => setUnit("celsius")}
-            >
-              Celsius
-            </button>
           </div>
         </header>
 

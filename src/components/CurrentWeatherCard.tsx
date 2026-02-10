@@ -6,7 +6,6 @@ type CurrentWeatherCardProps = {
 }
 
 export default function CurrentWeatherCard({ weather }: CurrentWeatherCardProps) {
-  const unitLabel = weather.unit === "fahrenheit" ? "F" : "C"
   const today = weather.daily[0]
 
   return (
@@ -36,7 +35,7 @@ export default function CurrentWeatherCard({ weather }: CurrentWeatherCardProps)
           {weather.current.precipChance ?? 0}% chance of precipitation with {weather.current.cloudCover}% cloud cover
         </p>
         <p>
-          Unit: °{unitLabel} • Visibility {(weather.current.visibility / 1000).toFixed(1)} km
+          Visibility {(weather.current.visibility / 1000).toFixed(1)} km
         </p>
       </div>
     </section>
