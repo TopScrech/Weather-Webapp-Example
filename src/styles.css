@@ -1,0 +1,598 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap");
+
+:root {
+  color-scheme: light;
+  --text-strong: #f6fcff;
+  --text-muted: rgba(236, 247, 255, 0.82);
+  --glass-bg: rgba(12, 38, 61, 0.32);
+  --glass-border: rgba(255, 255, 255, 0.26);
+  --shadow: 0 22px 45px rgba(5, 14, 24, 0.28);
+  --accent: #a1ecff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  background: #5ea4d8;
+  color: var(--text-strong);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  padding: 1.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: background 600ms ease;
+}
+
+.sky-default {
+  background: radial-gradient(circle at 15% 10%, #8ad4ff 0%, transparent 48%),
+    linear-gradient(165deg, #4995d9 0%, #6a8dd7 60%, #9ba2df 100%);
+}
+
+.sky-sunny {
+  background: radial-gradient(circle at 20% 12%, #ffe986 0%, transparent 38%),
+    linear-gradient(165deg, #41a6de 0%, #4bb8e2 52%, #7ad2f1 100%);
+}
+
+.sky-cloud {
+  background: radial-gradient(circle at 70% 14%, rgba(210, 236, 255, 0.7) 0%, transparent 36%),
+    linear-gradient(160deg, #4f7aaf 0%, #5c8bab 50%, #6f9db6 100%);
+}
+
+.sky-rain {
+  background: radial-gradient(circle at 20% 5%, rgba(149, 196, 222, 0.7) 0%, transparent 42%),
+    linear-gradient(165deg, #345e8f 0%, #1f4f78 45%, #345c87 100%);
+}
+
+.sky-storm {
+  background: radial-gradient(circle at 12% 10%, rgba(157, 183, 255, 0.65) 0%, transparent 45%),
+    linear-gradient(175deg, #2c3f69 0%, #263353 45%, #38455f 100%);
+}
+
+.sky-snow {
+  background: radial-gradient(circle at 15% 8%, rgba(247, 254, 255, 0.75) 0%, transparent 36%),
+    linear-gradient(165deg, #7ba4c6 0%, #95bfd8 56%, #c8d8e6 100%);
+}
+
+.sky-night {
+  background: radial-gradient(circle at 76% 14%, rgba(255, 237, 169, 0.42) 0%, transparent 26%),
+    linear-gradient(170deg, #13203d 0%, #1d2f56 60%, #28324d 100%);
+}
+
+.glow-layer {
+  position: absolute;
+  inset: -120px;
+  background:
+    radial-gradient(circle at 90% 90%, rgba(141, 224, 255, 0.38), transparent 35%),
+    radial-gradient(circle at 10% 85%, rgba(255, 211, 138, 0.32), transparent 32%);
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+.app-content {
+  position: relative;
+  width: min(100%, 1100px);
+  max-width: 1100px;
+  margin: 0 auto;
+  min-width: 0;
+  display: grid;
+  gap: 1rem;
+  animation: float-in 620ms ease;
+}
+
+.app-content > * {
+  min-width: 0;
+}
+
+@keyframes float-in {
+  from {
+    transform: translateY(18px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.headline {
+  margin: 0.2rem 0 0;
+  font-family: "Sora", "Outfit", sans-serif;
+  font-size: clamp(1.3rem, 1.8vw, 1.95rem);
+}
+
+.unit-toggle {
+  display: inline-flex;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: rgba(7, 24, 44, 0.32);
+}
+
+.unit-toggle button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.5rem 0.85rem;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  cursor: pointer;
+  transition: background 200ms ease, color 200ms ease;
+}
+
+.unit-toggle .toggle-active {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-strong);
+}
+
+.glass-card {
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  border-radius: 1.2rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-width: 0;
+}
+
+.search-card {
+  padding: 0.9rem;
+}
+
+.search-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 220px;
+  border: 0;
+  border-radius: 0.9rem;
+  background: rgba(5, 18, 30, 0.3);
+  color: var(--text-strong);
+  padding: 0.82rem 0.9rem;
+  font: inherit;
+}
+
+.search-input::placeholder {
+  color: rgba(236, 247, 255, 0.65);
+}
+
+.search-input:focus-visible,
+.ghost-button:focus-visible,
+.unit-toggle button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ghost-button {
+  border: 0;
+  border-radius: 0.9rem;
+  padding: 0.78rem 1rem;
+  background: rgba(161, 236, 255, 0.17);
+  color: var(--text-strong);
+  font: inherit;
+  cursor: pointer;
+}
+
+.search-helper {
+  margin: 0.68rem 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.search-results {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.search-result {
+  width: 100%;
+  border: 0;
+  border-radius: 0.9rem;
+  padding: 0.68rem 0.74rem;
+  text-align: left;
+  color: var(--text-strong);
+  background: rgba(8, 25, 40, 0.36);
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+
+.search-meta {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.current-card {
+  padding: 1.2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.current-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.current-heading h1 {
+  margin: 0;
+  font-family: "Sora", "Outfit", sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2.3rem);
+}
+
+.current-main {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.current-icon {
+  margin: 0;
+  font-size: 2.9rem;
+}
+
+.current-temp {
+  margin: 0;
+  font-family: "Sora", "Outfit", sans-serif;
+  font-size: clamp(2.4rem, 6vw, 4.1rem);
+  line-height: 0.95;
+}
+
+.condition-chip {
+  margin: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.88rem;
+}
+
+.current-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.current-summary p {
+  margin: 0;
+}
+
+.hourly-card,
+.daily-card,
+.rain-card,
+.sun-card,
+.air-card {
+  padding: 1rem;
+}
+
+.hourly-card h2,
+.daily-card h2,
+.rain-card h2,
+.sun-card h2,
+.air-card h2 {
+  margin: 0 0 0.8rem;
+  font-family: "Sora", "Outfit", sans-serif;
+  font-size: 1.06rem;
+}
+
+.hourly-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 86px;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.3rem;
+  scrollbar-width: thin;
+}
+
+.hourly-item {
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.55rem;
+  text-align: center;
+  animation: rise 360ms ease;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.hourly-time,
+.hourly-rain,
+.hourly-temp,
+.hourly-icon,
+.daily-item p,
+.metric-card p,
+.metric-card h3,
+.sun-card p,
+.air-card p,
+.pollutants p,
+.rain-card p {
+  margin: 0;
+}
+
+.hourly-time,
+.hourly-rain {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.hourly-icon {
+  font-size: 1.27rem;
+}
+
+.hourly-temp {
+  font-weight: 600;
+}
+
+.daily-list {
+  display: grid;
+  gap: 0.44rem;
+}
+
+.daily-item {
+  display: grid;
+  grid-template-columns: 48px 34px 1fr 42px minmax(90px, 1fr) 42px;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.74rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.62rem;
+}
+
+.daily-day,
+.daily-low,
+.daily-high {
+  font-weight: 600;
+}
+
+.daily-label {
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.daily-range-track {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.daily-range-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #9de4ff, #ffd98a);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 0.78rem;
+}
+
+.metric-card {
+  padding: 0.9rem;
+}
+
+.metric-card h3 {
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+.metric-value {
+  margin-top: 0.36rem;
+  font-family: "Sora", "Outfit", sans-serif;
+  font-size: 1.5rem;
+}
+
+.muted-text {
+  color: var(--text-muted);
+}
+
+.dual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.78rem;
+}
+
+.sun-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.sun-time {
+  margin-top: 0.2rem;
+  font-size: 1.18rem;
+  font-weight: 600;
+}
+
+.sun-track {
+  margin-top: 0.88rem;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.sun-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffd783, #ffeebb);
+}
+
+.air-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.air-aqi {
+  font-family: "Sora", "Outfit", sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.air-chart {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(30px, 1fr);
+  gap: 0.33rem;
+  margin-top: 0.82rem;
+  height: 110px;
+  align-items: end;
+}
+
+.air-bar-wrap {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.32rem;
+  align-items: end;
+}
+
+.air-bar {
+  width: 100%;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, #ffe08f, #95d0ff);
+}
+
+.air-time {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.pollutants {
+  margin-top: 0.82rem;
+  color: var(--text-muted);
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.87rem;
+}
+
+.rain-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(34px, 1fr);
+  gap: 0.3rem;
+  height: 124px;
+  align-items: end;
+}
+
+.rain-column {
+  display: grid;
+  gap: 0.3rem;
+  justify-items: center;
+}
+
+.rain-bar {
+  width: 100%;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, #9ce8ff, #4aa6e4);
+}
+
+.rain-mm,
+.rain-time {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.error-card,
+.loading-card {
+  padding: 0.9rem 1rem;
+}
+
+@media (max-width: 900px) {
+  .dual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 1rem;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .unit-toggle {
+    width: 100%;
+  }
+
+  .unit-toggle button {
+    flex: 1;
+  }
+
+  .daily-item {
+    grid-template-columns: 42px 26px minmax(60px, 1fr) 35px minmax(64px, 1fr) 35px;
+    gap: 0.3rem;
+    font-size: 0.84rem;
+  }
+
+  .daily-label {
+    max-width: 120px;
+  }
+
+  .current-summary {
+    font-size: 0.88rem;
+  }
+}
